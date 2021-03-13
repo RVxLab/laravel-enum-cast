@@ -1,0 +1,44 @@
+{
+    "name": "rvxlab/laravel-enum-cast",
+    "description": "Enum casts for Laravel",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "package",
+        "enums",
+        "myclabs"
+    ],
+    "require": {
+        "php": "^7.3|^8.0"
+    },
+    "require-dev": {
+        "nunomaduro/larastan": "^0.7.0",
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "orchestra/testbench": "^6.13",
+        "phpunit/phpunit": "^9.5",
+        "pestphp/pest": "^1.0"
+    },
+    "scripts": {
+        "phpcsfixer": "vendor/bin/php-cs-fixer fix",
+        "phpstan": "vendor/bin/phpstan analyze",
+        "test":  "vendor/bin/pest --coverage"
+    },
+    "autoload": {
+        "psr-4": {
+            "RVxLab\\LaravelEnumCast\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RVxLab\\LaravelEnumCast\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RVxLab\\LaravelEnumCast\\EnumCastServiceProvider"
+            ]
+        }
+    }
+}
