@@ -4,6 +4,6 @@ includes:
 parameters:
     paths:
         - src
-        - test
+        - tests
     level: 8
     checkMissingIterableValueType: false
