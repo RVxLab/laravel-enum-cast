@@ -8,10 +8,18 @@
         <testsuite name="Unit tests">
             <directory>./tests/Unit</directory>
         </testsuite>
+        <testsuite name="Feature tests">
+            <directory>./tests/Feature</directory>
+        </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./src</directory>
         </include>
     </coverage>
+
+    <php>
+         <server name="DB_CONNECTION" value="sqlite"/>
+         <server name="DB_DATABASE" value=":memory:"/>
+    </php>
 </phpunit>

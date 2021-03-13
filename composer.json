@@ -21,7 +21,7 @@
     },
     "scripts": {
         "phpcsfixer": "vendor/bin/php-cs-fixer fix",
-        "phpstan": "vendor/bin/phpstan analyze",
+        "phpstan": "@php -d memory_limit=-1 vendor/bin/phpstan analyze",
         "test":  "vendor/bin/phpunit --coverage-text"
     },
     "autoload": {
@@ -32,7 +32,10 @@
     "autoload-dev": {
         "psr-4": {
             "RVxLab\\LaravelEnumCast\\Tests\\": "tests"
-        }
+        },
+        "files": [
+            "tests/database/migrations/2021_03_13_153900_create_cars_table.php"
+        ]
     },
     "extra": {
         "laravel": {
