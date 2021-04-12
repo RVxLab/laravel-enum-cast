@@ -27,11 +27,13 @@ final class EnumCastTest extends TestCase
         self::assertTrue(CarMake::OPEL()->equals($car->make));
     }
 
-    public function testGetCastWithoutTrait(): void
+    public function testGetCastWithAlternateProperty(): void
     {
-        $this->expectException(MissingTraitException::class);
-
         $model = new class([ 'make' => CarMake::OPEL ]) extends Model {
+            use CastsEnums;
+
+            protected $table = 'cars';
+
             /** @var void[] */
             protected $guarded = [];
 
@@ -46,6 +48,31 @@ final class EnumCastTest extends TestCase
             ];
         };
 
+        $model->save();
+        $model->refresh();
+
+        self::assertTrue(CarMake::OPEL()->equals($model->getAttributeValue('make')));
+    }
+
+    public function testGetCastWithoutTrait(): void
+    {
+        $this->expectException(MissingTraitException::class);
+
+        $model = new class([ 'make' => CarMake::OPEL ]) extends Model {
+            /** @var void[] */
+            protected $guarded = [];
+
+            /** @var string[] */
+            protected $casts = [
+                'make' => EnumCast::class,
+            ];
+
+            /** @var string[] */
+            protected $enums = [
+                'make' => CarMake::class,
+            ];
+        };
+
         $model->getAttributeValue('make');
     }
 
@@ -55,6 +82,8 @@ final class EnumCastTest extends TestCase
 
         $model = new class([ 'make' => CarMake::OPEL ]) extends Model {
             use CastsEnums;
+
+            protected $table = 'cars';
 
             /** @var void[] */
             protected $guarded = [];

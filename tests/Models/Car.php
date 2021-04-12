@@ -25,7 +25,7 @@ final class Car extends Model
     ];
 
     /** @var string[] */
-    protected $enumCasts = [
+    protected $enums = [
         'make' => CarMake::class,
     ];
 }

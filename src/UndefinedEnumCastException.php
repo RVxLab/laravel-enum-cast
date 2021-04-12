@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace RVxLab\LaravelEnumCast;
 
+use Exception;
 use Throwable;
 
-class UndefinedEnumCastException extends \Exception
+class UndefinedEnumCastException extends Exception
 {
     /**
      * UndefinedEnumCastException constructor.
@@ -17,7 +18,7 @@ class UndefinedEnumCastException extends \Exception
      */
     public function __construct(string $attribute, string $modelClass, $code = 0, Throwable $previous = null)
     {
-        $message = sprintf('%s is not defined as an enum cast in %s, did you forget to add it to the $enumCasts array?', $attribute, $modelClass);
+        $message = sprintf('%s is not defined as an enum cast in %s, did you forget to add it to the $enums array?', $attribute, $modelClass);
 
         parent::__construct($message, $code, $previous);
     }

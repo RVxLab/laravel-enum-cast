@@ -13,10 +13,15 @@ trait CastsEnums
      */
     public function getEnumClassFor(string $attribute): string
     {
-        if (!property_exists($this, 'enumCasts') || !array_key_exists($attribute, $this->enumCasts)) {
-            throw new UndefinedEnumCastException($attribute, class_basename($this));
+        if (property_exists($this, 'enums') && array_key_exists($attribute, $this->enums)) {
+            return $this->enums[$attribute];
         }
 
-        return $this->enumCasts[$attribute];
+        // @phpstan-ignore-next-line
+        if (property_exists($this, 'enumCasts') && array_key_exists($attribute, $this->enumCasts)) {
+            return $this->enumCasts[$attribute];
+        }
+
+        throw new UndefinedEnumCastException($attribute, class_basename($this));
     }
 }
