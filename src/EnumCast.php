@@ -14,16 +14,20 @@ class EnumCast implements CastsAttributes
      * @param string $key
      * @param mixed $value
      * @param array $attributes
-     * @return Enum
+     * @return Enum | null
      * @throws MissingTraitException
      */
     public function get($model, string $key, $value, array $attributes)
     {
-        $enumCaster = app(EnumCaster::class);
+        if (null === $value) {
+            return null;
+        }
 
         if (!method_exists($model, 'getEnumClassFor')) {
             throw new MissingTraitException($model);
         }
+
+        $enumCaster = app(EnumCaster::class);
 
         $enumClass = $model->getEnumClassFor($key);
 
@@ -39,6 +43,10 @@ class EnumCast implements CastsAttributes
      */
     public function set($model, string $key, $value, array $attributes)
     {
+        if (null === $value) {
+            return null;
+        }
+
         $enumCaster = app(EnumCaster::class);
 
         if ($value instanceof Enum) {

@@ -89,4 +89,16 @@ final class EnumCastTest extends TestCase
 
         self::assertSame(CarMake::VOLKSWAGEN, $car->getAttributes()['make']);
     }
+
+    public function testNullable(): void
+    {
+        $car = new Car();
+
+        $car->setAttribute('make', null);
+        $car->save();
+
+        $car->refresh();
+
+        self::assertNull($car->getAttributeValue('make'));
+    }
 }

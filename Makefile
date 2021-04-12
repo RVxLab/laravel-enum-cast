@@ -3,8 +3,12 @@ EXEC="docker-compose exec workspace"
 up:
 	docker-compose up -d
 
+start: up
+
 down:
 	docker-compose down
+
+stop: down
 
 dcbuild:
 	docker-compose build

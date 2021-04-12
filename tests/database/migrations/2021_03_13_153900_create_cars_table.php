@@ -12,7 +12,7 @@ final class CreateCarsTable extends Migration
     {
         Schema::create('cars', static function (Blueprint $table): void {
             $table->id();
-            $table->string('make');
+            $table->string('make')->nullable();
             $table->timestamps();
         });
     }
