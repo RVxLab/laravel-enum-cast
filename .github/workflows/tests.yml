@@ -47,4 +47,7 @@ jobs:
         run: composer phpcsfixer -- --stop-on-violation
 
       - name: Run tests
-        run: composer test
+        run: composer test-coverage
+
+      - name: Check coverage
+        run: composer check-coverage

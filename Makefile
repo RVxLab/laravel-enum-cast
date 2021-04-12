@@ -22,7 +22,16 @@ phpstan:
 test:
 	"$(EXEC)" composer test
 
-test-all: phpstan phpcsfixer test
+test-coverage:
+	"$(EXEC)" composer test-coverage
+
+check-coverage:
+	"$(EXEC)" composer check-coverage
+
+test-all: phpstan phpcsfixer test-coverage check-coverage
 
 sh:
 	"$(EXEC)" bash
+
+composer:
+	"$(EXEC)" composer $(cmd)
