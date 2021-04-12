@@ -14,7 +14,7 @@ composer require rvxlab/laravel-enum-cast
 
 ## Usage
 
-Add the `CastsEnums` trait to your model, add the `EnumCast` class to the `$casts` array and create an `$enumCasts` array to tell which enum should be used.
+Add the `CastsEnums` trait to your model, add the `EnumCast` class to the `$casts` array and create an `$enums` array to tell which enum should be used.
 
 ```php
 class CarMake extends \MyCLabs\Enum\Enum
@@ -31,7 +31,7 @@ class Car extends \Illuminate\Database\Eloquent\Model
         'make' => \RVxLab\LaravelEnumCast\EnumCast::class,
     ];
     
-    protected $enumCasts = [
+    protected $enums = [
         'make' => CarMake::class,
     ];
 }
