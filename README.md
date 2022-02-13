@@ -2,6 +2,10 @@
 
 # Laravel Enum Cast
 
+## This package is no longer maintained
+
+**Native enums are supported as of PHP 8.1 and Laravel 8.71.0, as such I will no longer be maintaining this package.**
+
 Enum cast for Laravel Models using [myclabs/php-enum](https://github.com/myclabs/php-enum).
 
 ## Installation
