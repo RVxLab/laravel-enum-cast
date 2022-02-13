@@ -46,5 +46,6 @@
                 "RVxLab\\LaravelEnumCast\\EnumCastServiceProvider"
             ]
         }
-    }
+    },
+    "abandoned": true
 }
